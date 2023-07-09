@@ -1,13 +1,12 @@
-import express, { Request, Response } from "express";
+import express from "express";
 import dotenv from "dotenv";
+import indexRouter from "./Router/index.js";
 
 dotenv.config();
 
 const app = express();
 
-app.get("/", (req: Request, res: Response) => {
-    res.json({ test: "Ok" });
-});
+app.use("/v1",indexRouter)
 
 const PORT = process.env.PORT_NUMBER || 5002;
 app.listen(PORT, () => {
