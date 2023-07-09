@@ -1,4 +1,5 @@
-import { Response,Request } from "express"
+import { Response,Request } from "express";
+import PasteBinModel from "../Model/PasteBinModel.js";
 const getAllPasteBin = (req:Request,res:Response)=>{
     res.status(200).json({success:"Get all paste Bins route"});
 }
@@ -8,6 +9,9 @@ const getPastebinById = (req:Request,res:Response)=>{
 }
 
 const postPastebin = (req:Request,res:Response)=>{
+    const newPasteBin:PasteBinModel = req.body;
+    console.log(newPasteBin);
+    
     res.status(200).json({success:"post paste Bin route"});
 }
 

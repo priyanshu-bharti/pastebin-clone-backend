@@ -1,8 +1,9 @@
 import express from "express";
-import { getAllPasteBin,getPastebinById,postPastebin,deletePastebin,updatePastebin } from "../Controllers/PasteBinController.js";
+import { getAllPasteBin,getPastebinById,postPastebin,deletePastebin,updatePastebin } from "../Controllers/pastebinController.js";
+import pasteBinMiddleware from "../Middlewares/pastebinMiddleware.js";
 const router = express.Router();
 
-router.post('/',postPastebin);
+router.post('/',pasteBinMiddleware,postPastebin);
 
 router.get('/:id',getPastebinById);
 
