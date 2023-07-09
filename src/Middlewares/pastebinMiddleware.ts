@@ -8,4 +8,17 @@ const validatePasteBinModel = async (req:Request,res:Response,next:NextFunction)
         res.status(400).json({error:err})
     }
 }
-export default validatePasteBinModel;
+const validatePasteBinParamId = async (req:Request,res:Response,next:NextFunction)=>{
+    try{
+        const isIdExsists = req.params.id;
+        if(isIdExsists){
+            next();
+        }else{
+            throw "Param id not found";
+        }
+        
+    }catch(err){
+        res.status(400).json({error:err});
+    }
+}
+export  {validatePasteBinModel,validatePasteBinParamId}
