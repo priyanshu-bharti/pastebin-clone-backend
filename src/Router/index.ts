@@ -1,8 +1,8 @@
 import express from "express";
-import pastebinRouter from "./pastebinRouter.js";
+import pasteRouter from "./PasteRouter.js";
 
 const router = express.Router();
 
-router.use('/api',pastebinRouter);
+router.use("/api", pasteRouter);
 
 export default router;

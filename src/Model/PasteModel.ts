@@ -1,4 +1,4 @@
-export default interface PasteBinModel {
+export default interface PasteModel {
     title: string;
     data: string;
     expiresOn: number;
