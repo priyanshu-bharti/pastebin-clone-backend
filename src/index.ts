@@ -11,6 +11,6 @@ app.use("/v1", indexRouter);
 const PORT = process.env.PORT_NUMBER || 5002;
 
 app.listen(PORT, () => {
-    console.log("server has started on port");
+    console.log("server has successfully started");
     console.log("http://localhost:" + PORT);
 });
