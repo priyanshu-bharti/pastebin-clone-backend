@@ -5,7 +5,7 @@ import indexRouter from "./Router/index.js";
 dotenv.config();
 
 const app = express();
-
+app.use(express.json());
 app.use("/v1",indexRouter)
 
 const PORT = process.env.PORT_NUMBER || 5002;
