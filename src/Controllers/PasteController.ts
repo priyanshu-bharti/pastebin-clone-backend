@@ -1,12 +1,12 @@
 import { Response, Request } from "express";
-import PasteModel from "../Model/PasteModel.js";
+import PasteModel from "../Model/types/PasteModel.ts";
 import {
     savePasteToDb,
     getAllPasteFromDb,
     getPasteByIdFromDb,
     deletePasteByIdFromDb,
     updatePasteToDb,
-} from "../Services/PasteService.js";
+} from "../Services/PasteService.ts";
 
 const getAllPastes = async (req: Request, res: Response) => {
     const allPastes = await getAllPasteFromDb();
@@ -26,7 +26,7 @@ const getPasteById = async (req: Request, res: Response) => {
     }
 };
 
-const postPaste = async (req: Request, res: Response) => {
+const createPaste = async (req: Request, res: Response) => {
     const newPasteModel: PasteModel = req.body;
     const newPasteResult = await savePasteToDb(newPasteModel);
     if (newPasteResult) {
@@ -48,4 +48,4 @@ const updatePaste = async (req: Request, res: Response) => {
     }
 };
 
-export { getAllPastes, getPasteById, postPaste, updatePaste, deletePaste };
+export { getAllPastes, getPasteById, createPaste, updatePaste, deletePaste };

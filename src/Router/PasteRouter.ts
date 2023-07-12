@@ -3,22 +3,22 @@ import express from "express";
 import {
     getAllPastes,
     getPasteById,
-    postPaste,
+    createPaste,
     deletePaste,
     updatePaste,
-} from "../Controllers/PasteController.js";
+} from "../Controllers/PasteController.ts";
 
 import {
     validatePasteModel,
-    validatePasteParamId,
-} from "../Middlewares/PasteMiddleware.js";
+    validatePasteFromParamId,
+} from "../Middlewares/PasteMiddleware.ts";
 
 const router = express.Router();
 
-router.post("/", validatePasteModel, postPaste);
-router.get("/:id", validatePasteParamId, getPasteById);
+router.post("/", validatePasteModel, createPaste);
+router.get("/:id", validatePasteFromParamId, getPasteById);
 router.get("/", getAllPastes);
-router.delete("/:id", validatePasteParamId, deletePaste);
-router.put("/:id", validatePasteParamId, validatePasteModel, updatePaste);
+router.delete("/:id", validatePasteFromParamId, deletePaste);
+router.put("/:id", validatePasteFromParamId, validatePasteModel, updatePaste);
 
 export default router;

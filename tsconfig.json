@@ -23,7 +23,13 @@
         "outDir": "./dist",
 
         // Enable strict type checking rules
-        "strict": true
+        "strict": true,
+
+        // Do not emit compiler outputs
+        "noEmit": true,
+
+        // Allow Importing TS files
+        "allowImportingTsExtensions": true
     },
 
     // Specify the files that should be included and excluded in the compilation process

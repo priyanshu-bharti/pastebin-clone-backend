@@ -1,25 +1,25 @@
 import mongoose from "mongoose";
-const Schema = mongoose.Schema
+const Schema = mongoose.Schema;
 
-const PasteDBSchema = new Schema({
+const PasteDbSchema = new Schema({
     title: {
-        type:String,
-        default:'Untitled Snippet'
+        type: String,
+        default: "Untitled Snippet",
     },
     data: {
-        type:String,
-        default:"",
+        type: String,
+        default: "",
     },
     expiresOn: {
-        type:Number,
-        default:Date.now()
+        type: Number,
+        default: Date.now(),
     },
     isAnonymous: {
-        type:Boolean,
-        default:false
-    }
+        type: Boolean,
+        default: false,
+    },
 });
 
-const PasteDBModel = mongoose.model('Paste',PasteDBSchema);
+const PasteDbModel = mongoose.model("Paste", PasteDbSchema);
 
-export default PasteDBModel;
+export default PasteDbModel;

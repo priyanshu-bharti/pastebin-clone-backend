@@ -1,20 +1,20 @@
-import PasteValidationSchema from "../Model/joi/PasteValidationSchema.ts";
+import UserValidationSchema from "../Model/joi/UserValidationSchema.ts";
 import { Response, Request, NextFunction } from "express";
 
-const validatePasteModel = async (
+const validateUserModel = async (
     req: Request,
     res: Response,
     next: NextFunction
 ) => {
     try {
-        await PasteValidationSchema.validateAsync(req.body);
+        await UserValidationSchema.validateAsync(req.body);
         next();
     } catch (err) {
         res.status(400).json({ error: err });
     }
 };
 
-const validatePasteFromParamId = async (
+const validateUserFromParamId = async (
     req: Request,
     res: Response,
     next: NextFunction
@@ -31,4 +31,4 @@ const validatePasteFromParamId = async (
     }
 };
 
-export { validatePasteModel, validatePasteFromParamId };
+export { validateUserModel, validateUserFromParamId };
