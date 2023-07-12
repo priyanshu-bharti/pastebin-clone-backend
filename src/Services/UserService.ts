@@ -8,19 +8,20 @@ export const saveUserToDb = async (user: UserModel) => {
 };
 
 export const findUserByIdFromDb = async (id: string) => {
-    const user = await UserDbModel.findById(id);
+    const user = await UserDbModel.findOne({
+        id: id,
+    });
     return user;
 };
 
 export const deleteUserByIdFromDb = async (id: string) => {
-    const result = await UserDbModel.findByIdAndRemove(id);
+    const result = await UserDbModel.findOneAndDelete({
+        id: id,
+    });
     return result;
 };
 
-export const updateUserToDb = async (id: string, paste: UserModel) => {
-    const updatedPaste = await UserDbModel.updateOne(
-        { _id: id },
-        { _id: id, ...paste }
-    );
-    return updatedPaste;
+export const updateUserToDb = async (id: string, user: UserModel) => {
+    const updatedUser = await UserDbModel.updateOne({ id: id }, { ...user });
+    return updatedUser;
 };

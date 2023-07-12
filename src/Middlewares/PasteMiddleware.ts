@@ -20,8 +20,8 @@ const validatePasteFromParamId = async (
     next: NextFunction
 ) => {
     try {
-        const isExistingId = req.params.id;
-        if (isExistingId) {
+        const existingId = req.params.id;
+        if (existingId) {
             next();
         } else {
             throw "Param id not found";
