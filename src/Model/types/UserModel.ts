@@ -1,6 +1,6 @@
 export default interface UserModel {
     id: string;
-    fullName: string | null;
+    fullName: string;
     username: string;
     imageUrl: string;
 }
