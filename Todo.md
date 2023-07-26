@@ -6,9 +6,9 @@
 4. Redis
 5. Deployment
 
--   Add clerk to next.js app
+x   Add clerk to next.js app
 -   Get the User's details : id, fullName, username, imageUrl
--   Somehow link the user and the pastes while saving it to the database
+x   Somehow link the user and the pastes while saving it to the database
 -   Add clerk to express with middleware
 -   Protect paste routes on Express
 -   Remove the Clerk unAuth access log
