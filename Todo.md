@@ -1,11 +1,3 @@
-# Endpoints
-
-1. [POST] /api/v1/create
-2. [GET] /api/v1/:id
-3. [GET] /api/v1/
-4. [PUT] /api/v1/:id
-5. [DELETE] /api/v1/:id
-
 # Implement
 
 1. Clerk for Auth
@@ -13,3 +5,10 @@
 3. MongoDB
 4. Redis
 5. Deployment
+
+-   Add clerk to next.js app
+-   Get the User's details : id, fullName, username, imageUrl
+-   Somehow link the user and the pastes while saving it to the database
+-   Add clerk to express with middleware
+-   Protect paste routes on Express
+-   Remove the Clerk unAuth access log

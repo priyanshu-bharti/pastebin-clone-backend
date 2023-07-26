@@ -1,7 +1,7 @@
 import PasteDbModel from "../Model/Mongoose/PasteDbModel.ts";
 import PasteModel from "../Model/types/PasteModel.ts";
 
-export const savePasteToDb = async (newUserPaste: PasteModel) => {
+export const createPasteToDb = async (newUserPaste: PasteModel) => {
     const newPaste = new PasteDbModel(newUserPaste);
     newPaste.save();
     return true;
