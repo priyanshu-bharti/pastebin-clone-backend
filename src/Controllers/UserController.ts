@@ -19,7 +19,6 @@ export const createUser = async (req: Request, res: Response) => {
 export const getUser = async (req: Request, res: Response) => {
     try {
         const filteredUser = await findUserByIdFromDb(req.params.id);
-
         if (filteredUser) {
             res.status(200).json({ success: filteredUser });
         } else {
