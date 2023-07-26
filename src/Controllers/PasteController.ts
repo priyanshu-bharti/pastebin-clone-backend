@@ -9,13 +9,13 @@ import {
 } from "../Services/PasteService.ts";
 
 const getAllPastes = async (req: Request, res: Response) => {
-    const allPastes = await getAllPasteFromDb();
+    const allPastes = await getAllPasteFromDb(req.body.userId);
     res.status(200).json({ success: allPastes });
 };
 
 const getPasteById = async (req: Request, res: Response) => {
     try {
-        const filteredPaste = await getPasteByIdFromDb(req.params.id);
+        const filteredPaste = await getAllPasteFromDb(req.body.userId)
         if (filteredPaste) {
             res.status(200).json({ success: filteredPaste });
         } else {
@@ -28,7 +28,7 @@ const getPasteById = async (req: Request, res: Response) => {
 
 const createPaste = async (req: Request, res: Response) => {
     const newPasteModel: PasteModel = req.body;
-    const newPasteResult = await createPasteToDb(newPasteModel);
+    const newPasteResult = await createPasteToDb(req.params.userId,newPasteModel);
     if (newPasteResult) {
         res.status(200).json({ success: newPasteResult });
     }

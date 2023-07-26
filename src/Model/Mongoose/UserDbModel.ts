@@ -14,6 +14,12 @@ const UserDbSchema = new Schema({
     imageUrl: {
         type: String,
     },
+    pastes:[
+        {
+            type:Schema.Types.ObjectId,
+            ref:"Paste"
+        }
+    ]
 });
 
 const UserDbModel = mongoose.model("User", UserDbSchema);

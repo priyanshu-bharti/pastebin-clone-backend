@@ -7,6 +7,7 @@ export const saveUserToDb = async (user: UserModel) => {
     return true;
 };
 
+
 export const findUserByIdFromDb = async (id: string) => {
     const user = await UserDbModel.findOne({
         id: id,

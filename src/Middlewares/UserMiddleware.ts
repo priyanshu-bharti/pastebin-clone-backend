@@ -35,4 +35,23 @@ const validateUserFromParamId = async (
     }
 };
 
-export { validateUserModel, validateUserFromParamId };
+const validateUserFromUserId = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const existingId = req.body.userId;
+        console.log("🦄 LOG -> existingId:", existingId);
+
+        if (existingId) {
+            next();
+        } else {
+            throw "user Id not found";
+        }
+    } catch (err) {
+        res.status(400).json({ error: err });
+    }
+};
+
+export { validateUserModel, validateUserFromParamId,validateUserFromUserId };

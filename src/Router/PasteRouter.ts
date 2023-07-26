@@ -12,11 +12,12 @@ import {
     validatePasteModel,
     validatePasteFromParamId,
 } from "../Middlewares/PasteMiddleware.ts";
+import { validateUserFromUserId } from "../Middlewares/UserMiddleware.ts";
 
 const router = express.Router();
 
-router.post("/", validatePasteModel, createPaste);
-router.get("/:id", validatePasteFromParamId, getPasteById);
+router.post("/:userId", createPaste);
+router.get("/:id",validateUserFromUserId, getPasteById);
 router.get("/", getAllPastes);
 router.delete("/:id", validatePasteFromParamId, deletePaste);
 router.put("/:id", validatePasteFromParamId, validatePasteModel, updatePaste);

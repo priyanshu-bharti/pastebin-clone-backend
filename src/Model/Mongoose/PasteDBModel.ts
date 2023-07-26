@@ -18,6 +18,10 @@ const PasteDbSchema = new Schema({
         type: Boolean,
         default: false,
     },
+    owner:{
+        type:Schema.Types.ObjectId,
+        ref:"User"
+    }
 });
 
 const PasteDbModel = mongoose.model("Paste", PasteDbSchema);
