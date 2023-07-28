@@ -1,9 +1,12 @@
-import PasteDbModel from "../Model/Mongoose/PasteDbModel.ts";
+import PasteDbModel from "../Model/Mongoose/PasteDBModel.ts";
 import UserDbModel from "../Model/Mongoose/UserDbModel.ts";
 import PasteModel from "../Model/types/PasteModel.ts";
 import { findUserByIdFromDb } from "./UserService.ts";
 
-export const createPasteToDb = async (userId:string,newUserPaste: PasteModel) => {
+export const createPasteInDb = async (
+    userId: string,
+    newUserPaste: PasteModel
+) => {
     const user = await findUserByIdFromDb(userId);
     const newPaste = new PasteDbModel(newUserPaste);
     newPaste.owner = user?._id;
@@ -13,8 +16,10 @@ export const createPasteToDb = async (userId:string,newUserPaste: PasteModel) =>
     return result;
 };
 
-export const getAllPasteFromDb = async (userId:string) => {
-    const allPastes = await UserDbModel.findOne({id:userId}).populate("pastes");
+export const getAllPasteFromDb = async (userId: string) => {
+    const allPastes = await UserDbModel.findOne({ id: userId }).populate(
+        "pastes"
+    );
     return allPastes;
 };
 

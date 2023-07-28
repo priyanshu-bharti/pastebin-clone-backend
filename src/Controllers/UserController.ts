@@ -3,13 +3,13 @@ import UserModel from "../Model/types/UserModel.ts";
 import {
     deleteUserByIdFromDb,
     findUserByIdFromDb,
-    saveUserToDb,
+    createUserInDb,
     updateUserToDb,
 } from "../Services/UserService.ts";
 
 export const createUser = async (req: Request, res: Response) => {
     const newUserModel: UserModel = req.body;
-    const newUserResult = await saveUserToDb(newUserModel);
+    const newUserResult = await createUserInDb(newUserModel);
 
     if (newUserResult) {
         res.status(200).json({ success: newUserResult });

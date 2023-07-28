@@ -1,7 +1,7 @@
 import { Response, Request } from "express";
 import PasteModel from "../Model/types/PasteModel.ts";
 import {
-    createPasteToDb,
+    createPasteInDb,
     getAllPasteFromDb,
     getPasteByIdFromDb,
     deletePasteByIdFromDb,
@@ -15,7 +15,7 @@ const getAllPastes = async (req: Request, res: Response) => {
 
 const getPasteById = async (req: Request, res: Response) => {
     try {
-        const filteredPaste = await getAllPasteFromDb(req.body.userId)
+        const filteredPaste = await getAllPasteFromDb(req.body.userId);
         if (filteredPaste) {
             res.status(200).json({ success: filteredPaste });
         } else {
@@ -28,7 +28,10 @@ const getPasteById = async (req: Request, res: Response) => {
 
 const createPaste = async (req: Request, res: Response) => {
     const newPasteModel: PasteModel = req.body;
-    const newPasteResult = await createPasteToDb(req.params.userId,newPasteModel);
+    const newPasteResult = await createPasteInDb(
+        req.params.userId,
+        newPasteModel
+    );
     if (newPasteResult) {
         res.status(200).json({ success: newPasteResult });
     }
