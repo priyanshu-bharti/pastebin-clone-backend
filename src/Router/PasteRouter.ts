@@ -1,12 +1,16 @@
 import express from "express";
-
 import {
     getAllPastes,
     getPasteById,
     createPaste,
     deletePaste,
     updatePaste,
+    getPasteByPasteId,
 } from "../Controllers/PasteController.ts";
+import {
+    ClerkExpressRequireAuth,
+    
+  } from '@clerk/clerk-sdk-node';
 
 import {
     validatePasteModel,
@@ -16,10 +20,11 @@ import { validateUserFromUserId } from "../Middlewares/UserMiddleware.ts";
 
 const router = express.Router();
 
-router.post("/:userId", createPaste);
-router.get("/:id",validateUserFromUserId, getPasteById);
-router.get("/", getAllPastes);
-router.delete("/:id", validatePasteFromParamId, deletePaste);
-router.put("/:id", validatePasteFromParamId, validatePasteModel, updatePaste);
+router.post("/:userId",ClerkExpressRequireAuth({}), createPaste);
+router.get("/:id",ClerkExpressRequireAuth({}),validateUserFromUserId, getPasteById);
+router.get("/public/:id",getPasteByPasteId);
+router.get("/",ClerkExpressRequireAuth({}), getAllPastes);
+router.delete("/:id",ClerkExpressRequireAuth({}), validatePasteFromParamId, deletePaste);
+router.put("/",ClerkExpressRequireAuth({}),validatePasteModel, updatePaste);
 
 export default router;

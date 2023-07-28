@@ -1,5 +1,4 @@
 import express from "express";
-
 import {
     createUser,
     getUser,
@@ -14,7 +13,7 @@ import {
 
 const router = express.Router();
 
-router.post("/", validateUserModel, createUser);
+router.post("/",validateUserModel, createUser);
 router.get("/:id", validateUserFromParamId, getUser);
 router.delete("/:id", validateUserFromParamId, deleteUser);
 router.put("/:id", validateUserFromParamId, validateUserModel, updateUser);

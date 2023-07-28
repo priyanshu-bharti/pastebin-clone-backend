@@ -2,6 +2,10 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const PasteDbSchema = new Schema({
+    pasteId:{
+        type:String,
+        require:true,
+    },
     title: {
         type: String,
         default: "Untitled Snippet",

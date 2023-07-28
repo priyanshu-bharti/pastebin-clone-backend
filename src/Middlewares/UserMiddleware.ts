@@ -7,6 +7,7 @@ const validateUserModel = async (
     next: NextFunction
 ) => {
     try {
+        console.log(req.headers);
         const res = await UserValidationSchema.validateAsync(req.body);
         console.log("🦄 LOG -> res:", res);
 
