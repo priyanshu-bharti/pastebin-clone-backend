@@ -1,14 +1,11 @@
-# Implement
-
-1. Clerk for Auth
-2. Route Protect Auth
-3. MongoDB
-4. Redis
-5. Deployment
-
--   Add clerk to next.js app
--   Get the User's details : id, fullName, username, imageUrl
--   Somehow link the user and the pastes while saving it to the database
--   Add clerk to express with middleware
--   Protect paste routes on Express
--   Remove the Clerk unAuth access log
+- Implement auth at server
+- Get user data from clerk
+- Send auth info to express server
+- Verify auth at express server
+- When user signs in at next.js client, send a create user db request at express
+- Connect the client with the server
+- Test creating paste with client app and server
+- Improve the UI
+- Implement Redis at express
+- Containerize the app
+- Deploy to cloud
