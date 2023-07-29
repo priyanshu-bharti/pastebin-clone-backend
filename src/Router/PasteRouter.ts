@@ -1,4 +1,4 @@
-import express from "express";
+import express, { NextFunction } from "express";
 import {
     getAllPastes,
     getPasteById,
@@ -7,10 +7,7 @@ import {
     updatePaste,
     getPasteByPasteId,
 } from "../Controllers/PasteController.ts";
-import {
-    ClerkExpressRequireAuth,
-    
-  } from '@clerk/clerk-sdk-node';
+import { ClerkExpressRequireAuth } from "@clerk/clerk-sdk-node";
 
 import {
     validatePasteModel,
@@ -20,11 +17,26 @@ import { validateUserFromUserId } from "../Middlewares/UserMiddleware.ts";
 
 const router = express.Router();
 
-router.post("/:userId",ClerkExpressRequireAuth({}), createPaste);
-router.get("/:id",ClerkExpressRequireAuth({}),validateUserFromUserId, getPasteById);
-router.get("/public/:id",getPasteByPasteId);
-router.get("/",ClerkExpressRequireAuth({}), getAllPastes);
-router.delete("/:id",ClerkExpressRequireAuth({}), validatePasteFromParamId, deletePaste);
-router.put("/",ClerkExpressRequireAuth({}),validatePasteModel, updatePaste);
+router.post("/:userId", ClerkExpressRequireAuth({}), createPaste);
+
+router.get(
+    "/:id",
+    ClerkExpressRequireAuth({}),
+    validateUserFromUserId,
+    getPasteById
+);
+
+router.get("/public/:id", getPasteByPasteId);
+
+router.get("/", ClerkExpressRequireAuth({}), getAllPastes);
+
+router.delete(
+    "/:id",
+    ClerkExpressRequireAuth({}),
+    validatePasteFromParamId,
+    deletePaste
+);
+
+router.put("/", ClerkExpressRequireAuth({}), validatePasteModel, updatePaste);
 
 export default router;

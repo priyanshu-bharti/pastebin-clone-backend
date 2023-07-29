@@ -1,29 +1,38 @@
-import express, { Request, Response } from "express";
-import dotenv from "dotenv";
-import indexRouter from "./Router/index.ts";
 import { connectToDB } from "./Services/ConnectDatabase.ts";
-import cors from 'cors';
+import cors from "cors";
+import dotenv from "dotenv";
+import express, { Request, Response } from "express";
+import indexRouter from "./Router/index.ts";
+
+// Read Variables from .env
 dotenv.config();
+
+// Create new App
 const app = express();
 
-app.use(express.json());
-app.use(cors());
+// Use middlewares
+app.use(express.json()); // Body Parser
+app.use(cors()); // Allow CORS
+
+// Use Router
 app.use("/v1", indexRouter);
-app.get('/',(req:Request,res:Response)=>{
-   console.log(req.headers.authorization);
-   
-    res.send('test route!!')
-})
+
+// Define Port to listen on
 const PORT = process.env.PORT_NUMBER || 5002;
+
+// Connect to database and then start the server.
 connectToDB()
     .then((res) => {
+        // If connection is successful
         console.log("🦄 Debug: Server Connected to Database!");
+        // Start the server
         app.listen(PORT, () => {
             console.log("🦄 Debug: Server is Listening for requests...");
             console.log(`🦄 Debug: Base URL: http://localhost:${PORT}`);
         });
     })
     .catch((err) => {
+        // If any error pops up
         console.log("🦄 Debug: An error occurred:");
         console.log(err);
     });

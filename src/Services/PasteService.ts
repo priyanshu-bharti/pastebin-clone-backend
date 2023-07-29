@@ -16,14 +16,13 @@ export const createPasteInDb = async (
     return result;
 };
 
-export const getPasteByPasteIdFromDb = async(pasteId:string)=>{
-    const paste = await PasteDbModel.findOne({pasteId:pasteId});
+export const getPasteByPasteIdFromDb = async (pasteId: string) => {
+    const paste = await PasteDbModel.findOne({ pasteId: pasteId });
     return paste;
-}
-
+};
 
 export const getAllPasteFromDb = async (userId: string) => {
-    const allPastes = await PasteDbModel.find()
+    const allPastes = await PasteDbModel.find();
     return allPastes;
 };
 
@@ -40,7 +39,7 @@ export const deletePasteByIdFromDb = async (pasteId: string) => {
 export const updatePasteToDb = async (id: string, paste: PasteModel) => {
     const updatedPaste = await PasteDbModel.updateOne(
         { pasteId: id },
-        {...paste}
+        { ...paste }
     );
     return updatedPaste;
 };

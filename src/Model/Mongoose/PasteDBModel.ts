@@ -2,9 +2,9 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const PasteDbSchema = new Schema({
-    pasteId:{
-        type:String,
-        require:true,
+    pasteId: {
+        type: String,
+        require: true,
     },
     title: {
         type: String,
@@ -22,10 +22,10 @@ const PasteDbSchema = new Schema({
         type: Boolean,
         default: false,
     },
-    owner:{
-        type:Schema.Types.ObjectId,
-        ref:"User"
-    }
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+    },
 });
 
 const PasteDbModel = mongoose.model("Paste", PasteDbSchema);

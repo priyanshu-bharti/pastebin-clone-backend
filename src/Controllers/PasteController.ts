@@ -20,25 +20,26 @@ const getPasteById = async (req: Request, res: Response) => {
         if (filteredPaste) {
             res.status(200).json({ success: filteredPaste });
         } else {
-            res.status(400).json({ error: "no record found" });
+            res.status(400).json({ error: "No Record Found" });
         }
     } catch (err) {
-        res.status(400).json({ error: "no record found" });
+        res.status(400).json({ error: "No Record Found" });
     }
 };
-const getPasteByPasteId = async(req:Request,res:Response)=>{
-    try{
+const getPasteByPasteId = async (req: Request, res: Response) => {
+    try {
+        console.log(req.params.id);
         const result = await getPasteByPasteIdFromDb(req.params.id);
-        if(result){
-            res.status(200).json({success:result});
-        }else{
-            res.status(400).json({error:"Something Went Wrong"})
-        }
 
-    }catch(err){
-        res.status(400).json({error:"Something Went Wrong"})
+        if (result) {
+            res.status(200).json({ success: result });
+        } else {
+            res.status(404).json({ error: "Paste Not Found" });
+        }
+    } catch (err) {
+        res.status(400).json({ error: "Something Went Wrong" });
     }
-}
+};
 
 const createPaste = async (req: Request, res: Response) => {
     const newPasteModel: PasteModel = req.body;
@@ -58,11 +59,19 @@ const deletePaste = async (req: Request, res: Response) => {
 
 const updatePaste = async (req: Request, res: Response) => {
     try {
-        const updatedPaste = await updatePasteToDb(req.body.pasteId,req.body);
+        const updatedPaste = await updatePasteToDb(req.body.pasteId, req.body);
         res.status(200).json({ success: updatedPaste });
     } catch (err) {
-        res.status(400).json({ error: "something went wrong" });
+        res.status(400).json({ error: "Something Went Wrong" });
     }
 };
 
-export { getAllPastes, getPasteById, createPaste, updatePaste, deletePaste,getPasteByIdFromDb,getPasteByPasteId };
+export {
+    getAllPastes,
+    getPasteById,
+    createPaste,
+    updatePaste,
+    deletePaste,
+    getPasteByIdFromDb,
+    getPasteByPasteId,
+};

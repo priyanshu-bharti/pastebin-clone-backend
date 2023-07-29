@@ -1,5 +1,5 @@
 export default interface PasteModel {
-    pasteId:string;
+    pasteId: string;
     title: string;
     data: string;
     expiresOn: number;

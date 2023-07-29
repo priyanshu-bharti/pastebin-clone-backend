@@ -1,4 +1,4 @@
-import {StrictAuthProp} from '@clerk/clerk-sdk-node';
+import { StrictAuthProp } from "@clerk/clerk-sdk-node";
 export {};
 
 declare global {

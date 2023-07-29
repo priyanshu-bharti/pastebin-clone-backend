@@ -10,5 +10,5 @@ const schema = joi.object({
 export default schema;
 
 export const userId = joi.object({
-    userId:joi.string().required()
-})
+    userId: joi.string().required(),
+});
