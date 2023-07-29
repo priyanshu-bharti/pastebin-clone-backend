@@ -18,10 +18,8 @@ import { validateUserFromUserId } from "../Middlewares/UserMiddleware.ts";
 
 const router = express.Router();
 
-
+router.get("/user/:userId", ClerkExpressRequireAuth({}), getAllUserPastes);
 router.post("/:userId", ClerkExpressRequireAuth({}), createPaste);
-router.get("/user/:userId",getAllUserPastes);   
-
 router.get("/public/:id", getPasteByPasteId);
 
 router.get(
@@ -32,7 +30,6 @@ router.get(
 );
 
 router.get("/", ClerkExpressRequireAuth({}), getAllPastes);
-
 
 router.delete(
     "/:id",

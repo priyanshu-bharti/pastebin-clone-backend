@@ -15,11 +15,10 @@ const getAllPastes = async (req: Request, res: Response) => {
     res.status(200).json({ success: allPastes });
 };
 
-const getAllUserPastes = async(req:Request,res:Response)=>{
+const getAllUserPastes = async (req: Request, res: Response) => {
     const allUserPastes = await getAllUserPasteFromDb(req.params.userId);
-    res.status(200).json({success:allUserPastes});
-}
-
+    res.status(200).json({ success: allUserPastes });
+};
 
 const getPasteById = async (req: Request, res: Response) => {
     try {
@@ -35,9 +34,7 @@ const getPasteById = async (req: Request, res: Response) => {
 };
 const getPasteByPasteId = async (req: Request, res: Response) => {
     try {
-        console.log(req.params.id);
         const result = await getPasteByPasteIdFromDb(req.params.id);
-
         if (result) {
             res.status(200).json({ success: result });
         } else {
@@ -81,5 +78,5 @@ export {
     deletePaste,
     getPasteByIdFromDb,
     getPasteByPasteId,
-    getAllUserPastes
+    getAllUserPastes,
 };
