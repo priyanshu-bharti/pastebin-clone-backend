@@ -25,6 +25,10 @@ export const getAllPasteFromDb = async (userId: string) => {
     const allPastes = await PasteDbModel.find();
     return allPastes;
 };
+export const getAllUserPasteFromDb = async(userId:string)=>{
+    const allPastes = await UserDbModel.find({id:userId}).populate('pastes')
+    return allPastes;
+}
 
 export const getPasteByIdFromDb = async (pasteId: string) => {
     const paste = await PasteDbModel.findById(pasteId);

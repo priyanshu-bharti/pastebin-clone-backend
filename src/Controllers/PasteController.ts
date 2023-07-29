@@ -7,12 +7,19 @@ import {
     deletePasteByIdFromDb,
     updatePasteToDb,
     getPasteByPasteIdFromDb,
+    getAllUserPasteFromDb,
 } from "../Services/PasteService.ts";
 
 const getAllPastes = async (req: Request, res: Response) => {
     const allPastes = await getAllPasteFromDb(req.body.userId);
     res.status(200).json({ success: allPastes });
 };
+
+const getAllUserPastes = async(req:Request,res:Response)=>{
+    const allUserPastes = await getAllUserPasteFromDb(req.body.userId);
+    res.status(200).json({success:allUserPastes});
+}
+
 
 const getPasteById = async (req: Request, res: Response) => {
     try {
@@ -74,4 +81,5 @@ export {
     deletePaste,
     getPasteByIdFromDb,
     getPasteByPasteId,
+    getAllUserPastes
 };
