@@ -16,7 +16,7 @@ const getAllPastes = async (req: Request, res: Response) => {
 };
 
 const getAllUserPastes = async(req:Request,res:Response)=>{
-    const allUserPastes = await getAllUserPasteFromDb(req.body.userId);
+    const allUserPastes = await getAllUserPasteFromDb(req.params.userId);
     res.status(200).json({success:allUserPastes});
 }
 
