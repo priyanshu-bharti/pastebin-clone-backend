@@ -36,7 +36,7 @@ export const getPasteByIdFromDb = async (pasteId: string) => {
 };
 
 export const deletePasteByIdFromDb = async (pasteId: string) => {
-    const result = await PasteDbModel.findByIdAndRemove(pasteId);
+    const result = await PasteDbModel.findOneAndDelete({pasteId:pasteId});
     return result;
 };
 
