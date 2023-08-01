@@ -15,6 +15,10 @@ const app = express();
 app.use(express.json()); // Body Parser
 app.use(cors()); // Allow CORS
 
+app.get("/", (req, res) => {
+    res.send("Server is working");
+});
+
 // Use Router
 app.use("/v1", indexRouter);
 
