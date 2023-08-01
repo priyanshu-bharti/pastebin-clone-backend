@@ -7,9 +7,7 @@ const validateUserModel = async (
     next: NextFunction
 ) => {
     try {
-        console.log(req.headers);
         const res = await UserValidationSchema.validateAsync(req.body);
-        console.log("🦄 LOG -> res:", res);
 
         next();
     } catch (err) {
@@ -24,7 +22,6 @@ const validateUserFromParamId = async (
 ) => {
     try {
         const existingId = req.params.id;
-        console.log("🦄 LOG -> existingId:", existingId);
 
         if (existingId) {
             next();
@@ -43,7 +40,6 @@ const validateUserFromUserId = async (
 ) => {
     try {
         const existingId = req.body.userId;
-        console.log("🦄 LOG -> existingId:", existingId);
 
         if (existingId) {
             next();
@@ -55,4 +51,4 @@ const validateUserFromUserId = async (
     }
 };
 
-export { validateUserModel, validateUserFromParamId,validateUserFromUserId };
+export { validateUserModel, validateUserFromParamId, validateUserFromUserId };

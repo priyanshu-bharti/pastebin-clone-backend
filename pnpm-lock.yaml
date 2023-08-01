@@ -8,6 +8,7 @@ specifiers:
   '@types/jsonwebtoken': ^9.0.2
   '@types/lodash': ^4.14.195
   '@types/node': ^20.4.1
+  '@types/node-cron': ^3.0.8
   '@types/nodemailer': ^6.4.8
   argon2: ^0.30.3
   cors: ^2.8.5
@@ -19,6 +20,7 @@ specifiers:
   lodash: ^4.17.21
   mongoose: ^7.3.2
   nanoid: ^4.0.2
+  node-cron: ^3.0.2
   nodemailer: ^6.9.3
   pino: ^8.14.1
   pino-pretty: ^10.0.1
@@ -29,6 +31,7 @@ specifiers:
 dependencies:
   '@clerk/clerk-sdk-node': 4.12.1
   '@typegoose/typegoose': 11.3.0_mongoose@7.3.2
+  '@types/node-cron': 3.0.8
   argon2: 0.30.3
   cors: 2.8.5
   dayjs: 1.11.9
@@ -39,6 +42,7 @@ dependencies:
   lodash: 4.17.21
   mongoose: 7.3.2
   nanoid: 4.0.2
+  node-cron: 3.0.2
   nodemailer: 6.9.3
   pino: 8.14.1
   typescript: 5.1.6
@@ -290,6 +294,10 @@ packages:
 
   /@types/mime/3.0.1:
     resolution: {integrity: sha512-Y4XFY5VJAuw0FgAqPNd6NNoV44jbq9Bz2L7Rh/J6jLTiHBSBJa9fxqQIvkIld4GsoDOcCbvzOUAbLPsSKKg+uA==}
+
+  /@types/node-cron/3.0.8:
+    resolution: {integrity: sha512-+z5VrCvLwiJUohbRSgHdyZnHzAaLuD/E2bBANw+NQ1l05Crj8dIxb/kKK+OEqRitV2Wr/LYLuEBenGDsHZVV5Q==}
+    dev: false
 
   /@types/node-fetch/2.6.2:
     resolution: {integrity: sha512-DHqhlq5jeESLy19TYhLakJ07kNumXWjcDdxXsLUMJZ6ue8VZJj4kLPQVE/2mdHh3xZziNF1xppu5lwmS53HR+A==}
@@ -1185,6 +1193,13 @@ packages:
     resolution: {integrity: sha512-eh0GgfEkpnoWDq+VY8OyvYhFEzBk6jIYbRKdIlyTiAXIVJ8PyBaKb0rp7oDtoddbdoHWhq8wwr+XZ81F1rpNdA==}
     dev: false
 
+  /node-cron/3.0.2:
+    resolution: {integrity: sha512-iP8l0yGlNpE0e6q1o185yOApANRe47UPbLf4YxfbiNHt/RU5eBcGB/e0oudruheSf+LQeDMezqC5BVAb5wwRcQ==}
+    engines: {node: '>=6.0.0'}
+    dependencies:
+      uuid: 8.3.2
+    dev: false
+
   /node-fetch-native/1.0.1:
     resolution: {integrity: sha512-VzW+TAk2wE4X9maiKMlT+GsPU4OMmR1U9CrHSmd3DFLn2IcZ9VJ6M6BBugGfYUnPCLSYxXdZy17M0BEJyhUTwg==}
     dev: false
@@ -1709,6 +1724,11 @@ packages:
   /utils-merge/1.0.1:
     resolution: {integrity: sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==}
     engines: {node: '>= 0.4.0'}
+    dev: false
+
+  /uuid/8.3.2:
+    resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
+    hasBin: true
     dev: false
 
   /v8-compile-cache-lib/3.0.1:

@@ -1,6 +1,8 @@
-- Implement home page redirection
-- Implement displaying username
-- Implement Paste Expiration using Cron
-- Implement Redis at express
-- Containerize the app
-- Deploy to cloud
+-   Implement Redis at express
+-   Implement Paste Expiration using Cron
+-   Deploy to cloud
+
+When Someone Accesses Public Route
+
+Request -> Redis -> Backend -> Redis -> Client (When there is a miss)
+Request -> Redis -> Client (When there is a hit)

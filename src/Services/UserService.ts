@@ -2,9 +2,14 @@ import UserDbModel from "../Model/Mongoose/UserDbModel.ts";
 import UserModel from "../Model/types/UserModel.ts";
 
 export const createUserInDb = async (user: UserModel) => {
-    const newUser = new UserDbModel(user);
-    newUser.save();
-    return true;
+    const userExists = await UserDbModel.find({ id: user.id });
+    if (userExists.length >= 1) {
+        return false;
+    } else {
+        const newUser = new UserDbModel(user);
+        newUser.save();
+        return true;
+    }
 };
 
 export const findUserByIdFromDb = async (id: string) => {

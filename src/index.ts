@@ -1,8 +1,9 @@
 import { connectToDB } from "./Services/ConnectDatabase.ts";
 import cors from "cors";
 import dotenv from "dotenv";
-import express, { Request, Response } from "express";
+import express from "express";
 import indexRouter from "./Router/index.ts";
+import { pasteDeleteCron } from "./cron/pasteDeleteCron.ts";
 
 // Read Variables from .env
 dotenv.config();
@@ -29,6 +30,7 @@ connectToDB()
         app.listen(PORT, () => {
             console.log("🦄 Debug: Server is Listening for requests...");
             console.log(`🦄 Debug: Base URL: http://localhost:${PORT}`);
+            pasteDeleteCron();
         });
     })
     .catch((err) => {

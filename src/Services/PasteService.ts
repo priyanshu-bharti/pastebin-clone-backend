@@ -18,17 +18,19 @@ export const createPasteInDb = async (
 
 export const getPasteByPasteIdFromDb = async (pasteId: string) => {
     const paste = await PasteDbModel.findOne({ pasteId: pasteId });
-    return paste;
+    const user = await UserDbModel.findById(paste?.owner);
+    const data = { ...paste, userName: user?.username };
+    return data;
 };
 
 export const getAllPasteFromDb = async (userId: string) => {
     const allPastes = await PasteDbModel.find();
     return allPastes;
 };
-export const getAllUserPasteFromDb = async(userId:string)=>{
-    const allPastes = await UserDbModel.find({id:userId}).populate('pastes')
+export const getAllUserPasteFromDb = async (userId: string) => {
+    const allPastes = await UserDbModel.find({ id: userId }).populate("pastes");
     return allPastes;
-}
+};
 
 export const getPasteByIdFromDb = async (pasteId: string) => {
     const paste = await PasteDbModel.findById(pasteId);
@@ -36,7 +38,7 @@ export const getPasteByIdFromDb = async (pasteId: string) => {
 };
 
 export const deletePasteByIdFromDb = async (pasteId: string) => {
-    const result = await PasteDbModel.findOneAndDelete({pasteId:pasteId});
+    const result = await PasteDbModel.findOneAndDelete({ pasteId: pasteId });
     return result;
 };
 
@@ -46,4 +48,17 @@ export const updatePasteToDb = async (id: string, paste: PasteModel) => {
         { ...paste }
     );
     return updatedPaste;
+};
+
+export const handleDeletePasteCron = async () => {
+    const pastes = await PasteDbModel.find();
+    const todaysDate = Date.now();
+    const pastesToBeDeleted = pastes.filter(paste=>(paste.expiresOn-todaysDate)<=0).map(paste=>paste.pasteId)
+    console.log("pastes to be Expired ",pastesToBeDeleted);
+    
+    const result = await PasteDbModel.findOneAndDelete({
+        pasteId: { $in: pastesToBeDeleted },
+    });
+    
+    console.log("result is ", result);
 };
