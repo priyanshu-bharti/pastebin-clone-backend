@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import express from "express";
 import indexRouter from "./Router/index.js";
 import { pasteDeleteCron } from "./Cron/pasteDeleteCron.js";
+import { ClerkExpressRequireAuth } from "@clerk/clerk-sdk-node";
 // Read Variables from .env
 dotenv.config();
 // Create new App
@@ -13,6 +14,9 @@ app.use(express.json()); // Body Parser
 app.use(cors()); // Allow CORS
 app.get("/", (req, res) => {
     res.send("Server is working");
+});
+app.get("/protected", ClerkExpressRequireAuth({}), (req, res) => {
+    res.send("Protected Route Middleware is working");
 });
 // Use Router
 app.use("/v1", indexRouter);
