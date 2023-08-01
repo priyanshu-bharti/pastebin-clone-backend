@@ -4,7 +4,7 @@
         "dev": "nodemon src/index.ts",
         "build": "tsc --build",
         "clean": "tsc --build --clean",
-        "start": "node public/src/index.js"
+        "start": "node index.js"
     },
     "dependencies": {
         "@clerk/clerk-sdk-node": "^4.12.1",
