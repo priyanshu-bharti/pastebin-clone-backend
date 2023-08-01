@@ -1,4 +1,4 @@
-import PasteValidationSchema from "../Model/joi/PasteValidationSchema.ts";
+import PasteValidationSchema from "../Model/joi/PasteValidationSchema.js";
 import { Response, Request, NextFunction } from "express";
 
 const validatePasteModel = async (

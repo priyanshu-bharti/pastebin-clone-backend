@@ -1,5 +1,5 @@
 import { Response, Request } from "express";
-import PasteModel from "../Model/types/PasteModel.ts";
+import PasteModel from "../Model/types/PasteModel.js";
 import {
     createPasteInDb,
     getAllPasteFromDb,
@@ -8,7 +8,7 @@ import {
     updatePasteToDb,
     getPasteByPasteIdFromDb,
     getAllUserPasteFromDb,
-} from "../Services/PasteService.ts";
+} from "../Services/PasteService.js";
 
 const getAllPastes = async (req: Request, res: Response) => {
     const allPastes = await getAllPasteFromDb(req.body.userId);

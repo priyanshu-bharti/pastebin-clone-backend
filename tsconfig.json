@@ -26,10 +26,10 @@
         "strict": true,
 
         // Do not emit compiler outputs
-        "noEmit": true,
+        "noEmit": false,
 
         // Allow Importing TS files
-        "allowImportingTsExtensions": true
+        "allowImportingTsExtensions": false
     },
 
     // Specify the files that should be included and excluded in the compilation process

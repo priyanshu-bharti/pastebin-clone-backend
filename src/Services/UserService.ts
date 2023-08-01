@@ -1,5 +1,5 @@
-import UserDbModel from "../Model/Mongoose/UserDbModel.ts";
-import UserModel from "../Model/types/UserModel.ts";
+import UserDbModel from "../Model/Mongoose/UserDbModel.js";
+import UserModel from "../Model/types/UserModel.js";
 
 export const createUserInDb = async (user: UserModel) => {
     const userExists = await UserDbModel.find({ id: user.id });

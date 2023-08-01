@@ -1,11 +1,11 @@
 import { Response, Request } from "express";
-import UserModel from "../Model/types/UserModel.ts";
+import UserModel from "../Model/types/UserModel.js";
 import {
     deleteUserByIdFromDb,
     findUserByIdFromDb,
     createUserInDb,
     updateUserToDb,
-} from "../Services/UserService.ts";
+} from "../Services/UserService.js";
 
 export const createUser = async (req: Request, res: Response) => {
     const newUserModel: UserModel = req.body;

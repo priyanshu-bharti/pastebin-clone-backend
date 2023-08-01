@@ -1,9 +1,9 @@
-import { connectToDB } from "./Services/ConnectDatabase.ts";
+import { connectToDB } from "./Services/ConnectDatabase.js";
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
-import indexRouter from "./Router/index.ts";
-import { pasteDeleteCron } from "./cron/pasteDeleteCron.ts";
+import indexRouter from "./Router/index.js";
+import { pasteDeleteCron } from "./Cron/pasteDeleteCron.js";
 
 // Read Variables from .env
 dotenv.config();

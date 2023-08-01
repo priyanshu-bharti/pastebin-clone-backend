@@ -1,7 +1,7 @@
-import PasteDbModel from "../Model/Mongoose/PasteDBModel.ts";
-import UserDbModel from "../Model/Mongoose/UserDbModel.ts";
-import PasteModel from "../Model/types/PasteModel.ts";
-import { findUserByIdFromDb } from "./UserService.ts";
+import PasteDbModel from "../Model/Mongoose/PasteDBModel.js";
+import UserDbModel from "../Model/Mongoose/UserDbModel.js";
+import PasteModel from "../Model/types/PasteModel.js";
+import { findUserByIdFromDb } from "./UserService.js";
 
 export const createPasteInDb = async (
     userId: string,
@@ -53,12 +53,14 @@ export const updatePasteToDb = async (id: string, paste: PasteModel) => {
 export const handleDeletePasteCron = async () => {
     const pastes = await PasteDbModel.find();
     const todaysDate = Date.now();
-    const pastesToBeDeleted = pastes.filter(paste=>(paste.expiresOn-todaysDate)<=0).map(paste=>paste.pasteId)
-    console.log("pastes to be Expired ",pastesToBeDeleted);
-    
+    const pastesToBeDeleted = pastes
+        .filter((paste) => paste.expiresOn - todaysDate <= 0)
+        .map((paste) => paste.pasteId);
+    console.log("pastes to be Expired ", pastesToBeDeleted);
+
     const result = await PasteDbModel.findOneAndDelete({
         pasteId: { $in: pastesToBeDeleted },
     });
-    
+
     console.log("result is ", result);
 };

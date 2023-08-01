@@ -4,12 +4,12 @@ import {
     getUser,
     deleteUser,
     updateUser,
-} from "../Controllers/UserController.ts";
+} from "../Controllers/UserController.js";
 
 import {
     validateUserFromParamId,
     validateUserModel,
-} from "../Middlewares/UserMiddleware.ts";
+} from "../Middlewares/UserMiddleware.js";
 
 const router = express.Router();
 

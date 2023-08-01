@@ -1,6 +1,6 @@
 import express from "express";
-import pasteRouter from "./PasteRouter.ts";
-import userRouter from "./UserRouter.ts";
+import pasteRouter from "./PasteRouter.js";
+import userRouter from "./UserRouter.js";
 import { ClerkExpressRequireAuth } from "@clerk/clerk-sdk-node";
 
 const router = express.Router();

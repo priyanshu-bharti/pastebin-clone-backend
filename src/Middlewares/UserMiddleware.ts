@@ -1,4 +1,4 @@
-import UserValidationSchema from "../Model/joi/UserValidationSchema.ts";
+import UserValidationSchema from "../Model/joi/UserValidationSchema.js";
 import { Response, Request, NextFunction } from "express";
 
 const validateUserModel = async (

@@ -7,14 +7,14 @@ import {
     updatePaste,
     getPasteByPasteId,
     getAllUserPastes,
-} from "../Controllers/PasteController.ts";
+} from "../Controllers/PasteController.js";
 import { ClerkExpressRequireAuth } from "@clerk/clerk-sdk-node";
 
 import {
     validatePasteModel,
     validatePasteFromParamId,
-} from "../Middlewares/PasteMiddleware.ts";
-import { validateUserFromUserId } from "../Middlewares/UserMiddleware.ts";
+} from "../Middlewares/PasteMiddleware.js";
+import { validateUserFromUserId } from "../Middlewares/UserMiddleware.js";
 
 const router = express.Router();
 
