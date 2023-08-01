@@ -20,9 +20,15 @@ app.get("/", (req, res) => {
     res.send("Server is working");
 });
 
-app.get("/protected", ClerkExpressRequireAuth({}), (req, res) => {
-    res.send("Protected Route Middleware is working");
-});
+app.get(
+    "/protected",
+    ClerkExpressRequireAuth({
+        authorizedParties: ["https://api-sharesnip.vercel.app/"],
+    }),
+    (req, res) => {
+        res.send("Protected Route Middleware is working");
+    }
+);
 
 // Use Router
 app.use("/v1", indexRouter);
